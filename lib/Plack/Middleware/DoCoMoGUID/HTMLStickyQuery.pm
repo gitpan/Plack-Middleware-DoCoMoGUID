@@ -15,7 +15,10 @@ sub call {
         if ( $content_type && $content_type =~ m{text/html} ) {
             my $sticky = HTML::StickyQuery::DoCoMoGUID->new;
             $sticky->{sticky}->utf8_mode(1);
-            $body = $sticky->sticky(arrayref => $body);
+            $body = $sticky->sticky(
+                arrayref => $body,
+                ( $self->{params} ? ( param => $self->{params} ) : () ),
+            );
             $res->[2] = [ $body ];
         }
     }
@@ -37,6 +40,16 @@ Plack::Middleware::DoCoMoGUID::HTMLStickyQuery - added guid=ON to html content l
     builder {
         enable_if { $_[0]->{HTTP_USER_AGENT} =~ /DoCoMo/i } 'DoCoMoGUID::HTMLStickyQuery';
     };
+
+or add check param
+
+    use Plack::Builder;
+
+    builder {
+        enable_if { $_[0]->{HTTP_USER_AGENT} =~ /DoCoMo/i } 'DoCoMoGUID::HTMLStickyQuery' params => +{ 'foo' => 'bar' };
+    };
+
+this will also append foo parameter to link or form.
 
 =head1 DESCRIPTION
 
