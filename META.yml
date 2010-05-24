@@ -31,4 +31,5 @@ requires:
   URI: 0
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.02
+  repository: git://github.com/walf443/p5-plack-middleware-docomoguid.git
+version: 0.03
