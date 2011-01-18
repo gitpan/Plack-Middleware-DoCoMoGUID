@@ -2,7 +2,7 @@ package Plack::Middleware::DoCoMoGUID;
 
 use strict;
 use warnings;
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 use parent 'Plack::Middleware';
 
 use Plack::Middleware::DoCoMoGUID::HTMLStickyQuery;
@@ -59,8 +59,8 @@ Keiji Yoshimi E<lt>walf443 at gmail dot comE<gt>
 
 =head1 SEE ALSO
 
-+<Plack::Middleware::DoCoMoGUID::RedirectFilter>, +<Plack::Middleware::DoCoMoGUID::HTMLStickyQuery>
-+<Plack::Middleware::DoCoMoGUID::CheckParam> 
+L<Plack::Middleware::DoCoMoGUID::RedirectFilter>, L<Plack::Middleware::DoCoMoGUID::HTMLStickyQuery>
+L<Plack::Middleware::DoCoMoGUID::CheckParam> 
 
 http://www.nttdocomo.co.jp/service/imode/make/content/ip/index.html#imodeid
 
