@@ -19,6 +19,9 @@ sub call {
                 arrayref => $body,
                 ( $self->{params} ? ( param => $self->{params} ) : () ),
             );
+            if ( Plack::Util::header_exists($res->[1], 'Content-Length') ) {
+                Plack::Util::header_set($res->[1], 'Content-Length', length($body));
+            }
             $res->[2] = [ $body ];
         }
     }

@@ -8,7 +8,7 @@ use warnings;
 
 use vars qw($VERSION);
 
-$VERSION = '0.11';
+$VERSION = '0.12';
 
 my %CHAR2DEFAULT_ENT= ( '&' => '&amp;', '<' => '&lt;', '>' => '&gt;', '"' => '&quot;');
 my %NUM2DEFAULT_ENT= ( '38' => 'amp', '60' => 'lt', '62' => 'gt', '"' => '&quot;');
@@ -132,6 +132,7 @@ sub getParentNode
     return $elt->{_parent} || bless { _root => $elt }, 'HTML::TreeBuilder::XPath::Root';
   }
 sub getName             { return shift->tag;   }
+sub getLocalName        { (my $name= $_[0]->tag) =~ s{^.*:}{}; $name; }
 sub getNextSibling      { my( $elt)= @_; 
                           my $parent= $elt->{_parent} || return undef;
                           return  $parent->_child_as_object( scalar $elt->right, ($elt->{_rank} || 0) + 1);
@@ -533,4 +534,4 @@ sub cmp { return $_[1]->isa( ' HTML::TreeBuilder::XPath::Root') ? 0 : 1; }
 
 __END__
 
-#line 642
+#line 643
